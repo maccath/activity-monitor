@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
+    $visit = new App\Events\HomepageVisit();
+
+    event($visit);
+
     return view('welcome');
 });
