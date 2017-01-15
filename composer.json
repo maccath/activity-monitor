@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.1",
-        "laravel/framework": "5.3.*"
+        "laravel/framework": "5.3.*",
+        "fennb/phirehose": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,7 +18,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "vendor/fennb/phirehose/lib"
         ],
         "psr-4": {
             "App\\": "app/"
