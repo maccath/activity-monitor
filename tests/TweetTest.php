@@ -1,0 +1,14 @@
+<?php
+
+class TweetTest extends TestCase
+{
+    /**
+     * Test that Tweet model exists
+     */
+    public function testTweetModelExists()
+    {
+        $tweet = new \App\Tweet();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Model::class, $tweet);
+    }
+}
