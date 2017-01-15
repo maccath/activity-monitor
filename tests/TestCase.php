@@ -9,6 +9,19 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://localhost';
 
+    /** @var \Faker\Generator */
+    protected $faker;
+
+    /**
+     * Set up the test case with a faker instance
+     */
+    public function setUp()
+    {
+        $this->faker = Faker\Factory::create();
+
+        parent::setUp();
+    }
+
     /**
      * Creates the application.
      *
