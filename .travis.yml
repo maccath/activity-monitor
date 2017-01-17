@@ -1,9 +1,10 @@
-{
-  "language": "php",
-  "php": "7.1",
-  "install": [
-    "composer install",
-    "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-    "php artisan key:generate"
-  ],
-}
+language: php
+php: '7.1'
+addons:
+  ssh_known_hosts: 138.68.172.224
+before_install:
+- . ./scripts/install.sh
+script:
+- . ./scripts/test.sh
+after_success:
+- . ./scripts/deploy.sh
