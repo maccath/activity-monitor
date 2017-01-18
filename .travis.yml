@@ -1,7 +1,7 @@
 language: php
 php: '7.1'
 addons:
-  ssh_known_hosts: 138.68.172.224
+  ssh_known_hosts: katy-ereira.co.uk
 before_install:
 - . ./scripts/install.sh
 script:
