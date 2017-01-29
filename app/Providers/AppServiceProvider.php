@@ -38,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
             ->needs(Client::class)
             ->give(function () {
                 return new Client([
+                'base_uri' => 'https://api.github.com',
+                'timeout' => 2.0,
+                'headers' => [
+                  'Authorization' => 'token ' . env('GITHUB_ACCESS_TOKEN', null)
+                ]
             ]);
         });
     }
