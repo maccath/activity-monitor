@@ -5,7 +5,7 @@ namespace App\ActivityStreams;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Collection;
 
-interface PeriodicStreamInterface
+interface PeriodicStreamInterface extends StreamInterface
 {
     /**
      * @param \GuzzleHttp\ClientInterface $client

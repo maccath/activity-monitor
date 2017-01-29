@@ -7,9 +7,16 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
-class GithubStream extends PeriodicStream
+class GithubStream implements PeriodicStreamInterface
 {
     use DispatchesJobs;
+    use PeriodicStream;
+
+    /** @var string  */
+    protected $name = 'Github Stream';
+
+    /** @var string  */
+    protected $description = 'Fetch github activity.';
 
     /**
      * @return \Illuminate\Support\Collection

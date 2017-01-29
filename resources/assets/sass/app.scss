@@ -7,3 +7,11 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.label-periodic {
+  @include label-variant($label-warning-bg);
+}
+
+.label-continual {
+  @include label-variant($label-success-bg);
+}

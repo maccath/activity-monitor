@@ -12,7 +12,7 @@ class HomepageTest extends BrowserKitTest
     public function testHomepageView()
     {
         $this->visit('/')
-             ->see('Laravel');
+             ->see('Activity Monitor');
     }
 
     /**
