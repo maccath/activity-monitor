@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\ConnectTwitterStream;
+use App\Console\Commands\FetchGithubActivityStream;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ConnectTwitterStream::class
+        ConnectTwitterStream::class,
+        FetchGithubActivityStream::class
     ];
 
     /**
@@ -25,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('stream:github')
+           ->everyFiveMinutes();
     }
 
     /**

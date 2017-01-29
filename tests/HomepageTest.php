@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class HomepageTest extends TestCase
+class HomepageTest extends BrowserKitTest
 {
     /**
      * Test that the homepage can be viewed
