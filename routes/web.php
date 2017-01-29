@@ -38,3 +38,4 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'DashboardController@index');
 Route::get('/streams', 'DashboardController@streams');
+Route::get('/streams/fetch/{stream}', 'StreamController@reload')->name('fetch');

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\ActivityStreams\PeriodicStream;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -56,6 +57,16 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
         ], function ($router) {
             require base_path('routes/web.php');
+        });
+
+
+        Route::bind('stream', function ($value) {
+            $stream = new \ReflectionClass('App\ActivityStreams\\' . $value);
+            if (! $stream->implementsInterface('App\ActivityStreams\PeriodicStreamInterface')) {
+                abort(404);
+            }
+
+            return $this->app->make('App\ActivityStreams\\' . $value);
         });
     }
 

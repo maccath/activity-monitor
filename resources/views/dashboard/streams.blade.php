@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading">Streams Dashboard</div>
                 <table class="table table-striped">
@@ -13,6 +18,7 @@
                             <th></th>
                             <th></th>
                             <th>Last Fetched</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +36,16 @@
                                     </span>
                                 </td>
                                 <td>
-                                    @if ($stream->getType() == 'Periodic') {{ $stream->lastFetch()->format('d-m-Y H:i') }} @endif
+                                    @if ($stream->getType() == 'Periodic')
+                                        {{ $stream->lastFetch() ? $stream->lastFetch()->format('d-m-Y H:i') : 'Never' }}
+                                    @else
+                                        &mdash;
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($stream->getType() == 'Periodic')
+                                        <a class="btn btn-default btn-xs" href="{{ $stream->getFetchUrl() }}">Fetch Now</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -30,6 +30,14 @@ trait PeriodicStream
     }
 
     /**
+     * @return string
+     */
+    public function getFetchUrl()
+    {
+        return route('fetch', ['name' => str_replace('App\ActivityStreams\\', '', get_class($this))]);
+    }
+
+    /**
      * Fetch new activity
      */
     public function fetch()
