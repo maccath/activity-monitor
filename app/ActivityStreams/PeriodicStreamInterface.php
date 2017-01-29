@@ -5,7 +5,7 @@ namespace App\ActivityStreams;
 interface PeriodicStreamInterface
 {
     /**
-     *
+     * Fetch the latest activity
      */
-    public function check();
+    public function fetch();
 }
