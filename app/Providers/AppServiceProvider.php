@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\ActivityStreams\GithubStream;
 use App\ActivityStreams\TwitterStream;
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +32,13 @@ class AppServiceProvider extends ServiceProvider
               env('TWITTER_ACCESS_TOKEN_SECRET', null),
               \Phirehose::METHOD_FILTER
             );
+        });
+
+        $this->app->when(GithubStream::class)
+            ->needs(Client::class)
+            ->give(function () {
+                return new Client([
+            ]);
         });
     }
 }
