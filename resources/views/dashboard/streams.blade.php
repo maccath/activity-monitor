@@ -11,15 +11,27 @@
                         <tr>
                             <th>Name</th>
                             <th></th>
-                            <th>Last Run</th>
+                            <th></th>
+                            <th>Last Fetched</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($streams as $stream)
                             <tr>
-                                <td>{{ $stream->getName() }}</td>
-                                <td>{{ $stream->getDescription() }}</td>
-                                <td>@if ($stream->getType() == 'Periodic') {{ $stream->lastFetch()->format('d-m-Y H:i') }} @endif</td>
+                                <td>
+                                    {{ $stream->getName() }}
+                                </td>
+                                <td>
+                                    {{ $stream->getDescription() }}
+                                </td>
+                                <td>
+                                    <span class="label label-{{ strtolower($stream->getType()) }}">
+                                        {{ $stream->getType() }}
+                                    </span>
+                                </td>
+                                <td>
+                                    @if ($stream->getType() == 'Periodic') {{ $stream->lastFetch()->format('d-m-Y H:i') }} @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
