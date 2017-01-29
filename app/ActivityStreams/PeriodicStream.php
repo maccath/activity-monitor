@@ -15,6 +15,9 @@ abstract class PeriodicStream implements PeriodicStreamInterface
     /** @var Carbon */
     protected $fetchedAt = null;
 
+    /** @var Collection */
+    protected $items;
+
     /**
      * @param \GuzzleHttp\ClientInterface $client
      */
@@ -30,7 +33,7 @@ abstract class PeriodicStream implements PeriodicStreamInterface
     {
         $this->fetchedAt = new Carbon();
 
-        $items = $this->getItems()
+        $items = $this->fetchItems()
             ->filter(function ($item) {
                 if (!$this->lastFetch()) return true;
 
@@ -39,13 +42,30 @@ abstract class PeriodicStream implements PeriodicStreamInterface
 
         $this->updateLastFetch();
 
-        return $items;
+        $this->items = $items;
+        $this->process();
     }
 
     /**
      * @return Collection
      */
-    abstract protected function getItems(): Collection;
+    public function getItems(): Collection {
+        return $this->items;
+    }
+
+    protected function process() {
+        $this->items->each(function ($item) {
+            $this->processItem($item);
+        });
+    }
+
+    abstract protected function processItem($item);
+
+    /**
+     * @return Collection
+     */
+    abstract protected function fetchItems(): Collection;
+
 
     /**
      * @param mixed $item
