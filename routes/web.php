@@ -37,5 +37,6 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'DashboardController@index');
+
 Route::get('/streams', 'DashboardController@streams');
-Route::get('/streams/fetch/{stream}', 'StreamController@reload')->name('fetch');
+Route::get('/streams/fetch/{stream}', 'StreamController@fetch')->name('fetch');

@@ -17,7 +17,7 @@ class StreamController extends Controller
      * @param \App\ActivityStreams\PeriodicStreamInterface $stream
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function reload(Request $request, PeriodicStreamInterface $stream)
+    public function fetch(Request $request, PeriodicStreamInterface $stream)
     {
         $stream->fetch();
 
