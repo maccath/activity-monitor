@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\ActivityStreams\GithubStream;
 use App\ActivityStreams\TwitterStream;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->when(GithubStream::class)
-            ->needs(Client::class)
+            ->needs(ClientInterface::class)
             ->give(function () {
                 return new Client([
                 'base_uri' => 'https://api.github.com',
