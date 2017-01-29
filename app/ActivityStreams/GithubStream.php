@@ -28,7 +28,8 @@ class GithubStream implements PeriodicStreamInterface
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetch() {
+    public function fetch()
+    {
         $response = $this->client->get('/users/maccath/events');
         $this->fetchedAt = new Carbon();
 
@@ -51,9 +52,7 @@ class GithubStream implements PeriodicStreamInterface
      */
     private function lastFetch()
     {
-        $lastFetch = StreamStatus::whereName(self::class)->value('last_fetch');
-
-        return $lastFetch ? new Carbon($lastFetch) : null;
+        return StreamStatus::whereName(self::class)->value('last_fetch');
     }
 
     private function updateLastFetch()
