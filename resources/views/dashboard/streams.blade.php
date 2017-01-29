@@ -17,7 +17,7 @@
                             <th>Name</th>
                             <th></th>
                             <th></th>
-                            <th>Last Fetched</th>
+                            <th>Last Consumed</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                                 </td>
                                 <td>
                                     @if ($stream->getType() == 'Periodic')
-                                        <a class="btn btn-default btn-xs" href="{{ $stream->getFetchUrl() }}">Fetch Now</a>
+                                        <a class="btn btn-default btn-xs" href="{{ $stream->getConsumeUrl() }}">Consume</a>
                                     @endif
                                 </td>
                             </tr>

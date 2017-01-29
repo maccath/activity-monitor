@@ -17,9 +17,9 @@ class StreamController extends Controller
      * @param \App\ActivityStreams\PeriodicStreamInterface $stream
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function fetch(Request $request, PeriodicStreamInterface $stream)
+    public function consume(Request $request, PeriodicStreamInterface $stream)
     {
-        $stream->fetch();
+        $stream->consume();
 
         $fetched = sprintf(
             '%s fetched %d new items',

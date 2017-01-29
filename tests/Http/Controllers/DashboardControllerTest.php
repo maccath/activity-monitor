@@ -23,7 +23,7 @@ class DashboardControllerTest extends TestCase
 
     public function testStreamFetchNotLoggedIn()
     {
-        $this->get('/streams/fetch/GithubStream')
+        $this->get('/streams/consume/GithubStream')
           ->assertRedirect('/login');
     }
 }

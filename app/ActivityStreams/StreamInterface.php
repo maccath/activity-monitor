@@ -21,4 +21,11 @@ interface StreamInterface
      * @return string
      */
     public function getType(): string;
+
+    /**
+     * Consume the stream
+     *
+     * @return mixed
+     */
+    public function consume();
 }

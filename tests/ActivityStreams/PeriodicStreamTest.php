@@ -37,9 +37,9 @@ class PeriodicStreamTest extends TestCase
 
     public function testGetFetchUrl()
     {
-        $this->assertNotEmpty($this->stream->getFetchUrl());
-        $this->assertContains('/streams/fetch', $this->stream->getFetchUrl());
-        $this->assertNotContains('App\ActivityStreams', $this->stream->getFetchUrl());
+        $this->assertNotEmpty($this->stream->getConsumeUrl());
+        $this->assertContains('/streams/consume', $this->stream->getConsumeUrl());
+        $this->assertNotContains('App\ActivityStreams', $this->stream->getConsumeUrl());
     }
 
     public function testGetType()
