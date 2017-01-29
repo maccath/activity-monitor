@@ -7,8 +7,11 @@ use Carbon\Carbon;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Collection;
 
-abstract class PeriodicStream implements PeriodicStreamInterface
+trait PeriodicStream
 {
+    use HasName;
+    use HasDescription;
+
     /** @var \GuzzleHttp\ClientInterface */
     protected $client;
 
@@ -49,43 +52,65 @@ abstract class PeriodicStream implements PeriodicStreamInterface
     /**
      * @return Collection
      */
-    public function getItems(): Collection {
+    public function getItems(): Collection
+    {
         return $this->items;
     }
 
-    protected function process() {
+    /**
+     * @return Carbon|null
+     */
+    public function lastFetch()
+    {
+        return StreamStatus::whereName(static::class)->value('last_fetch');
+    }
+
+    /**
+     * Process collected items
+     */
+    protected function process()
+    {
         $this->items->each(function ($item) {
             $this->processItem($item);
         });
     }
 
+    /**
+     * Process individual item
+     *
+     * @param $item
+     * @return mixed
+     */
     abstract protected function processItem($item);
 
     /**
+     * Fetch collection of items from API
+     *
      * @return Collection
      */
     abstract protected function fetchItems(): Collection;
 
-
     /**
+     * Get date created of item
+     *
      * @param mixed $item
      * @return Carbon
      */
     abstract protected function getDateOf($item): Carbon;
 
-    /**
-     * @return Carbon|null
-     */
-    protected function lastFetch()
-    {
-        return StreamStatus::whereName(self::class)->value('last_fetch');
-    }
-
     protected function updateLastFetch()
     {
         StreamStatus::updateOrCreate(
-          ['name' => self::class],
+          ['name' => static::class],
           ['last_fetch' => $this->fetchedAt]
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return self::PERIODIC;
     }
 }
