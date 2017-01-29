@@ -33,6 +33,6 @@ class TwitterStream extends \OauthPhirehose implements ContinualStreamInterface
      */
     public function getType(): string
     {
-        return self::CONTINUAL;
+        return StreamInterface::CONTINUAL;
     }
 }

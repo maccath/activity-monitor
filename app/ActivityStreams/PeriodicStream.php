@@ -119,6 +119,6 @@ trait PeriodicStream
      */
     public function getType(): string
     {
-        return self::PERIODIC;
+        return StreamInterface::PERIODIC;
     }
 }
