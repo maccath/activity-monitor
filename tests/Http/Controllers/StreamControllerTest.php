@@ -19,13 +19,13 @@ class StreamControllerTest extends TestCase
         $requestMock->shouldReceive('session')->andReturn($sessionMock);
 
         // Assert that we fetch items from the stream
-        $streamMock->shouldReceive('fetch')->once();
+        $streamMock->shouldReceive('consume')->once();
 
         // Assert that we flash the correct message
         $sessionMock->shouldReceive('flash')->with('status', 'Test Stream fetched 2 new items')->once();
 
         $controller = new \App\Http\Controllers\StreamController();
-        $response = $controller->fetch($requestMock, $streamMock);
+        $response = $controller->consume($requestMock, $streamMock);
 
         // Assert that we are redirected after success
         $this->assertInstanceOf(\Illuminate\Http\RedirectResponse::class, $response);

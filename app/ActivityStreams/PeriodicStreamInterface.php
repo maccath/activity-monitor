@@ -13,11 +13,8 @@ interface PeriodicStreamInterface extends StreamInterface
     public function __construct(ClientInterface $client);
 
     /**
-     * Fetch new items
-     */
-    public function fetch();
-
-    /**
+     * Get items consumed
+     *
      * @return Collection
      */
     public function getItems(): Collection;

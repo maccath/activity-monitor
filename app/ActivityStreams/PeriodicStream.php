@@ -32,15 +32,15 @@ trait PeriodicStream
     /**
      * @return string
      */
-    public function getFetchUrl()
+    public function getConsumeUrl()
     {
-        return route('fetch', ['name' => str_replace('App\ActivityStreams\\', '', get_class($this))]);
+        return route('consume', ['name' => str_replace('App\ActivityStreams\\', '', get_class($this))]);
     }
 
     /**
-     * Fetch new activity
+     * Consume new activity
      */
-    public function fetch()
+    public function consume()
     {
         $this->fetchedAt = new Carbon();
 

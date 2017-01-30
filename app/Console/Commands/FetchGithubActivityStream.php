@@ -35,6 +35,6 @@ class FetchGithubActivityStream extends Command
      */
     public function handle()
     {
-        $this->githubActivityStream->fetch();
+        $this->githubActivityStream->consume();
     }
 }

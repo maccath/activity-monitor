@@ -44,12 +44,12 @@ class GithubStreamTest extends TestCase
     {
         $this->fakeResponseBody->method('getContents')->willReturn($this->getFakeGithubActivity());
 
-        // First fetch, all items
-        $this->githubStream->fetch();
+        // First consume, all items
+        $this->githubStream->consume();
         $this->assertNotEmpty($this->githubStream->getItems());
 
-        // Second fetch, shouldn't be any items left to fetch!
-        $this->githubStream->fetch();
+        // Second consume, shouldn't be any items left to consume!
+        $this->githubStream->consume();
         $this->assertEmpty($this->githubStream->getItems());
     }
 
@@ -59,7 +59,7 @@ class GithubStreamTest extends TestCase
 
         $this->expectsJobs([\App\Jobs\ProcessGithubActivity::class]);
 
-        $this->githubStream->fetch();
+        $this->githubStream->consume();
     }
 
     public function getFakeGithubActivity()
