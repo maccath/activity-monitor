@@ -168,6 +168,7 @@ return [
          */
 
         //
+        Greabock\Maker\MakerServiceProvider::class,
 
         /*
          * Application Service Providers...
