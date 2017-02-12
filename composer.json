@@ -9,7 +9,8 @@
         "laravel/framework": "5.4.*",
         "fennb/phirehose": "^1.0",
         "guzzlehttp/guzzle": "^6.2",
-        "laravel/browser-kit-testing": "^1.0"
+        "laravel/browser-kit-testing": "^1.0",
+        "greabock/maker": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
