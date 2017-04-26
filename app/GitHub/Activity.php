@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Github;
+namespace App\GitHub;
 
 use Illuminate\Database\Eloquent\Model;
 

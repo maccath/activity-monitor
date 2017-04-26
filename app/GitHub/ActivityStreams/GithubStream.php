@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Github\ActivityStreams;
+namespace App\GitHub\ActivityStreams;
 
 use App\ActivityStreams\PeriodicStream;
 use App\ActivityStreams\PeriodicStreamInterface;
-use App\Github\Jobs\ProcessActivity;
+use App\GitHub\Jobs\ProcessActivity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesJobs;

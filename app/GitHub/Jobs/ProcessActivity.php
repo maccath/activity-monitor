@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Github\Jobs;
+namespace App\GitHub\Jobs;
 
-use App\Github\Activity;
+use App\GitHub\Activity;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
