@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\ActivityStreams\GithubStream;
-use App\ActivityStreams\TwitterStream;
+use App\GitHub\ActivityStreams\GithubStream;
+use App\Twitter\ActivityStreams\TwitterStream;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +33,9 @@ class StreamServiceProvider extends ServiceProvider
         ];
 
         $this->app->tag($streamProviders, 'streams');
+
+        $this->app->bind('TwitterStream', TwitterStream::class);
+        $this->app->bind('GithubStream', GithubStream::class);
 
         $this->app->bind(TwitterStream::class, function () {
             return new TwitterStream(

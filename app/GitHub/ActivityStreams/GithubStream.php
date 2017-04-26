@@ -1,8 +1,10 @@
 <?php
 
-namespace App\ActivityStreams;
+namespace App\GitHub\ActivityStreams;
 
-use App\Jobs\ProcessGithubActivity;
+use App\ActivityStreams\PeriodicStream;
+use App\ActivityStreams\PeriodicStreamInterface;
+use App\GitHub\Jobs\ProcessActivity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -36,7 +38,7 @@ class GithubStream implements PeriodicStreamInterface
      */
     protected function processItem($item)
     {
-        $this->dispatch(new ProcessGithubActivity($item));
+        $this->dispatch(new ProcessActivity($item));
     }
 
     /**

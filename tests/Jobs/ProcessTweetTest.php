@@ -14,15 +14,15 @@ class ProcessTweetTest extends TestCase
     public function testTweetProcessed()
     {
         $randomTweetData = $this->createRandomTweetData();
-        $processTweet = new \App\Jobs\ProcessTweet(json_encode($randomTweetData));
+        $processTweet = new \App\Twitter\Jobs\ProcessTweet(json_encode($randomTweetData));
 
         // Not there yet.
-        $this->assertEmpty(\App\Tweet::where('id', '=', $randomTweetData['id_str'])->get());
+        $this->assertEmpty(\App\Twitter\Tweet::where('id', '=', $randomTweetData['id_str'])->get());
 
         $processTweet->handle();
 
         // Now it is!
-        $this->assertNotEmpty(\App\Tweet::where('id', '=', $randomTweetData['id_str'])->get());
+        $this->assertNotEmpty(\App\Twitter\Tweet::where('id', '=', $randomTweetData['id_str'])->get());
     }
 
     /**
@@ -32,7 +32,7 @@ class ProcessTweetTest extends TestCase
     {
         $this->expectException(Exception::class);
 
-        $processTweet = new \App\Jobs\ProcessTweet("{ 'bar': 'baz' }");
+        $processTweet = new \App\Twitter\Jobs\ProcessTweet("{ 'bar': 'baz' }");
         $processTweet->handle();
     }
 
@@ -47,7 +47,7 @@ class ProcessTweetTest extends TestCase
         $this->assertArrayNotHasKey('user', $randomTweetData);
         $this->expectException(\Exception::class);
 
-        $processTweet = new \App\Jobs\ProcessTweet(json_encode($randomTweetData));
+        $processTweet = new \App\Twitter\Jobs\ProcessTweet(json_encode($randomTweetData));
         $processTweet->handle();
     }
 
@@ -65,7 +65,7 @@ class ProcessTweetTest extends TestCase
         $this->assertArrayNotHasKey('id_str', $randomTweetData);
         $this->expectException(\Exception::class);
 
-        $processTweet = new \App\Jobs\ProcessTweet(json_encode($randomTweetData));
+        $processTweet = new \App\Twitter\Jobs\ProcessTweet(json_encode($randomTweetData));
         $processTweet->handle();
     }
 

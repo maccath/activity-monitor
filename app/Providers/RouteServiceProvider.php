@@ -59,9 +59,8 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/web.php');
         });
 
-
         Route::bind('stream', function ($value) {
-            $stream = new \ReflectionClass('App\ActivityStreams\\' . $value);
+            $stream = resolve($value);
             if (! $stream->implementsInterface('App\ActivityStreams\PeriodicStreamInterface')) {
                 abort(404);
             }

@@ -7,7 +7,7 @@ class TweetTest extends TestCase
      */
     public function testTweetModelExists()
     {
-        $tweet = new \App\Tweet();
+        $tweet = new \App\Twitter\Tweet();
 
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Model::class, $tweet);
     }

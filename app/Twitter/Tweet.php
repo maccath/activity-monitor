@@ -1,20 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Twitter;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GithubActivity extends Model
+class Tweet extends Model
 {
     /** @var array */
     protected $fillable = [
       'id',
       'json',
-      'type',
-      'repo_id',
-      'repo_name',
+      'text',
       'user_id',
-      'user_name',
+      'user_screen_name',
       'created_at',
     ];
 }

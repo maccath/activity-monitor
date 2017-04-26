@@ -10,7 +10,7 @@ class StreamControllerTest extends TestCase
 
     public function testStreamFetch()
     {
-        $streamMock = Mockery::mock(\App\ActivityStreams\GithubStream::class)->makePartial();
+        $streamMock = Mockery::mock(\App\GitHub\ActivityStreams\GithubStream::class)->makePartial();
         $sessionMock = Mockery::mock(\Illuminate\Session\Store::class)->makePartial();
         $requestMock = Mockery::mock(\Illuminate\Http\Request::class)->makePartial();
 

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\ActivityStreams\TwitterStream;
+use App\Twitter\ActivityStreams\TwitterStream;
 use Illuminate\Console\Command;
 
 class ConnectTwitterStream extends Command
@@ -13,13 +13,13 @@ class ConnectTwitterStream extends Command
     /** @var string  */
     protected $description = 'Connect to the Twitter activity stream';
 
-    /** @var \App\ActivityStreams\TwitterStream */
+    /** @var \App\Twitter\ActivityStreams\TwitterStream */
     protected $twitterStream;
 
     /**
      * ConnectTwitterStream constructor.
      *
-     * @param \App\ActivityStreams\TwitterStream $twitterStream
+     * @param \App\Twitter\ActivityStreams\TwitterStream $twitterStream
      */
     public function __construct(TwitterStream $twitterStream)
     {

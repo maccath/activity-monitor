@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\ActivityStreams\GithubStream;
+use App\GitHub\ActivityStreams\GithubStream;
 use Illuminate\Console\Command;
 
 class FetchGithubActivityStream extends Command
@@ -13,13 +13,13 @@ class FetchGithubActivityStream extends Command
     /** @var string  */
     protected $description = 'Fetch the Github activity stream';
 
-    /** @var \App\ActivityStreams\GithubStream */
+    /** @var \App\GitHub\ActivityStreams\GithubStream */
     protected $githubActivityStream;
 
     /**
      * ConnectTwitterStream constructor.
      *
-     * @param \App\ActivityStreams\GithubStream $githubStream
+     * @param \App\GitHub\ActivityStreams\GithubStream $githubStream
      */
     public function __construct(GithubStream $githubStream)
     {

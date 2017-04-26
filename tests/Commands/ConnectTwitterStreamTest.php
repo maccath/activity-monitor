@@ -2,7 +2,7 @@
 
 class ConnectTwitterStreamTest extends TestCase
 {
-    /** @var \App\ActivityStreams\TwitterStream */
+    /** @var \App\Twitter\ActivityStreams\TwitterStream */
     private $twitterStream;
 
     /** @var \App\Console\Commands\ConnectTwitterStream */
@@ -12,7 +12,7 @@ class ConnectTwitterStreamTest extends TestCase
     {
         parent::setUp();
 
-        $this->twitterStream = Mockery::mock(\App\ActivityStreams\TwitterStream::class)->makePartial();
+        $this->twitterStream = Mockery::mock(\App\Twitter\ActivityStreams\TwitterStream::class)->makePartial();
         $this->connectTwitterStreamCommand = new \App\Console\Commands\ConnectTwitterStream($this->twitterStream);
     }
 

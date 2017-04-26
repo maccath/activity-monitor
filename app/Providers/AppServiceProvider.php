@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-use App\ActivityStreams\GithubStream;
-use App\ActivityStreams\TwitterStream;
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Twitter\Jobs;
 
-use App\Tweet;
+use App\Twitter\Tweet;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\ActivityStreams;
+namespace App\Twitter\ActivityStreams;
 
-use App\Jobs\ProcessTweet;
+use App\ActivityStreams\ContinualStreamInterface;
+use App\ActivityStreams\HasDescription;
+use App\ActivityStreams\HasName;
+use App\ActivityStreams\StreamInterface;
+use App\Twitter\Jobs\ProcessTweet;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class TwitterStream extends \OauthPhirehose implements ContinualStreamInterface
