@@ -2,7 +2,7 @@
 
 class TwitterStreamTest extends TestCase
 {
-    /** @var \App\ActivityStreams\TwitterStream */
+    /** @var \App\Twitter\ActivityStreams\TwitterStream */
     private $twitterStream;
 
     public function setUp()
@@ -10,7 +10,7 @@ class TwitterStreamTest extends TestCase
         parent::setUp();
 
         $this->twitterStream = $this
-          ->getMockBuilder(\App\ActivityStreams\TwitterStream::class)
+          ->getMockBuilder(\App\Twitter\ActivityStreams\TwitterStream::class)
           ->disableOriginalConstructor()
           ->setMethods(null)
           ->getMock();
@@ -29,7 +29,7 @@ class TwitterStreamTest extends TestCase
      */
     public function testReceivedTweetDispatchesJob()
     {
-        $this->expectsJobs([\App\Jobs\ProcessTweet::class]);
+        $this->expectsJobs([\App\Twitter\Jobs\ProcessTweet::class]);
 
         $this->twitterStream->enqueueStatus('some test');
     }

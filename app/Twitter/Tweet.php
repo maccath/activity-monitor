@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Twitter;
 
 use Illuminate\Database\Eloquent\Model;
 
