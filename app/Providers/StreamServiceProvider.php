@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\ActivityStreams\GithubStream;
+use App\Github\ActivityStreams\GithubStream;
 use App\Twitter\ActivityStreams\TwitterStream;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;

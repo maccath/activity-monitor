@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Github\Jobs;
 
-use App\GithubActivity;
+use App\Github\Activity;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ProcessGithubActivity implements ShouldQueue
+class ProcessActivity implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -37,7 +37,7 @@ class ProcessGithubActivity implements ShouldQueue
      */
     private function createActivity()
     {
-        GithubActivity::create([
+        Activity::create([
           'id' => $this->activity->id,
           'json' => json_encode($this->activity),
           'type' => $this->activity->type ?? 'Unknown',

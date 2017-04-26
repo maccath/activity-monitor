@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Github;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GithubActivity extends Model
+class Activity extends Model
 {
+    /** @var string */
+    protected $table = 'github_activities';
+
     /** @var array */
     protected $fillable = [
       'id',

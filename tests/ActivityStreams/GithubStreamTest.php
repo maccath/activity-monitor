@@ -4,7 +4,7 @@ class GithubStreamTest extends TestCase
 {
     use \Illuminate\Foundation\Testing\DatabaseMigrations;
 
-    /** @var \App\ActivityStreams\GithubStream */
+    /** @var \App\Github\ActivityStreams\GithubStream */
     private $githubStream;
 
     /** @var string fake GitHub API response body */
@@ -32,7 +32,7 @@ class GithubStreamTest extends TestCase
         $client->method('get')->willReturn($response);
         $response->method('getBody')->willReturn($this->fakeResponseBody);
 
-        $this->githubStream = new \App\ActivityStreams\GithubStream($client);
+        $this->githubStream = new \App\Github\ActivityStreams\GithubStream($client);
     }
 
     public function testImplementsPeriodicStream()
@@ -57,7 +57,7 @@ class GithubStreamTest extends TestCase
     {
         $this->fakeResponseBody->method('getContents')->willReturn($this->getFakeGithubActivity());
 
-        $this->expectsJobs([\App\Jobs\ProcessGithubActivity::class]);
+        $this->expectsJobs([\App\Github\Jobs\ProcessActivity::class]);
 
         $this->githubStream->consume();
     }
