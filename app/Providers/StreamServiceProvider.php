@@ -34,6 +34,9 @@ class StreamServiceProvider extends ServiceProvider
 
         $this->app->tag($streamProviders, 'streams');
 
+        $this->app->bind('TwitterStream', TwitterStream::class);
+        $this->app->bind('GithubStream', GithubStream::class);
+
         $this->app->bind(TwitterStream::class, function () {
             return new TwitterStream(
               env('TWITTER_ACCESS_TOKEN', null),
