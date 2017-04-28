@@ -34,7 +34,7 @@ trait PeriodicStream
      */
     public function getConsumeUrl()
     {
-        return route('consume', ['name' => str_replace('App\ActivityStreams\\', '', get_class($this))]);
+        return route('consume', ['name' => (new \ReflectionClass($this))->getShortName()]);
     }
 
     /**

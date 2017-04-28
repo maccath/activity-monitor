@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\ActivityStreams\PeriodicStream;
+use App\ActivityStreams\PeriodicStreamInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -61,11 +62,11 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('stream', function ($value) {
             $stream = resolve($value);
-            if (! $stream->implementsInterface('App\ActivityStreams\PeriodicStreamInterface')) {
+            if (! $stream instanceof PeriodicStreamInterface) {
                 abort(404);
             }
 
-            return $this->app->make('App\ActivityStreams\\' . $value);
+            return $stream;
         });
     }
 
